@@ -86,7 +86,6 @@ Holen.propTypes = {
   body: PropTypes.any,
   children: PropTypes.func,
   credentials: PropTypes.string,
-  data: PropTypes.object,
   headers: PropTypes.object,
   lazy: PropTypes.bool,
   method: PropTypes.oneOf(['get', 'post', 'put', 'delete']),
