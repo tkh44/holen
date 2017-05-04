@@ -75,6 +75,7 @@ export default class Holen extends Component {
           this.setState(
             {
               data: response.data,
+              fetching: false,
               response: {
                 ...response,
                 data: response.body

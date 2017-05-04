@@ -21,6 +21,6 @@ npm install -S holen
 import Holen from 'holen'
 
 <Holen url="api.startup.com/users" method="GET">
-  {({ data, fetch }) => <pre>{JSON.stringify(data, null, 2)}</pre>}
+  {({ data, fetch, fetching }) => <pre>{JSON.stringify(data, null, 2)}</pre>}
 </Holen> 
 ```
