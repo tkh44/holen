@@ -1,4 +1,4 @@
-import buble from 'rollup-plugin-buble'
+import babel from 'rollup-plugin-babel';
 import fs from 'fs'
 
 const pkg = JSON.parse(fs.readFileSync('./package.json'))
@@ -10,7 +10,9 @@ export default {
   globals: { react: 'React' },
   useStrict: false,
   sourceMap: true,
-  plugins: [buble()],
+  plugins: [babel({
+    exclude: 'node_modules/**'
+  })],
   targets: [
     {dest: pkg.main, format: 'cjs'},
     {dest: pkg.module, format: 'es'},
