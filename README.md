@@ -92,18 +92,6 @@ You must use the `fetch` named argument in order to initiate the request.
 
 *[MDN - Method](https://developer.mozilla.org/en-US/docs/Web/API/Request/method)*
 
-**lazy** `boolean`
-
-If true then the component will **not** perform the fetch on mount. 
-You must use the `fetch` named argument in order to initiate the request.
-
-```jsx
-<Holen 
-  lazy 
-  url="api.startup.com/users">
-  {({fetching}) => {fetching && <div>Loading</div>}} // renders nothing, fetch was not started
-</Holen>
-```
 
 **onResponse** `function`
 
