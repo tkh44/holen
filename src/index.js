@@ -1,8 +1,14 @@
-import {Component} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import fetch from 'isomorphic-unfetch'
 
-export default class Holen extends Component {
+function childrenToArray (children) {
+  return Array.isArray && Array.isArray(children)
+    ? children
+    : [].concat(children)
+}
+
+export default class Holen extends React.Component {
   constructor (props) {
     super(props)
 
@@ -88,7 +94,9 @@ export default class Holen extends Component {
     if (!this.props.children) {
       return null
     }
-    return this.props.children({
+
+    const children = childrenToArray(this.props.children)
+    return children[0]({
       fetching: this.state.fetching,
       response: this.state.response,
       data: this.state.data,
