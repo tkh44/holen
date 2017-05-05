@@ -27,7 +27,7 @@ export default class Holen extends Component {
     this.willUnmount = true
   }
 
-  async doFetch (options) {
+  doFetch (options) {
     const {
       url,
       body,
@@ -37,35 +37,47 @@ export default class Holen extends Component {
     } = Object.assign({}, this.props, options)
 
     this.setState({fetching: true})
-    let response
-    let data
-    let error
 
-    try {
-      response = await fetch(url, {
-        body,
-        credentials,
-        headers,
-        method
-      })
-      response.data = null
-      data = await response.json()
-      response.data = data
-    } catch (e) {
-      error = e
+    const updateState = (error, response) => {
+      this.setState(
+        {
+          data: response.data,
+          error,
+          fetching: false,
+          response
+        },
+        () => {
+          this.props.onResponse(error, response)
+        }
+      )
     }
 
-    this.setState(
-      {
-        data,
-        error,
-        fetching: false,
-        response
-      },
-      () => {
-        this.props.onResponse(error, response)
-      }
-    )
+    return fetch(url, {
+      body,
+      credentials,
+      headers,
+      method
+    })
+      .then(res => {
+        return res
+          .json()
+          .then(data => {
+            res.data = data
+            return res
+          })
+          .catch(e => {
+            updateState(e, undefined, res)
+            return e
+          })
+      })
+      .then(res => {
+        updateState(undefined, res)
+        return res
+      })
+      .catch(e => {
+        updateState(e, undefined)
+        return e
+      })
   }
 
   render () {

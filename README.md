@@ -1,7 +1,7 @@
 
 
 # Holen
-<p align="center" style="font-size: 1.2rem;">Declarative fetch in React</p>
+Declarative fetch in React
 
 [![npm version](https://badge.fury.io/js/holen.svg)](https://badge.fury.io/js/holen)
 [![Build Status](https://travis-ci.org/tkh44/holen.svg?branch=master)](https://travis-ci.org/tkh44/holen)
