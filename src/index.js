@@ -66,7 +66,7 @@ export default class Holen extends Component {
             return res
           })
           .catch(e => {
-            updateState(e, undefined, res)
+            updateState(e, res)
             return e
           })
       })
