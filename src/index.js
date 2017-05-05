@@ -59,6 +59,10 @@ export default class Holen extends Component {
       method
     })
       .then(res => {
+        if (this.willUnmount) {
+          return
+        }
+
         return res
           .json()
           .then(data => {
