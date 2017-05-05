@@ -1,6 +1,6 @@
 {
   "name": "holen",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Tiny flux implementation built on mitt",
   "jsnext:main": "dist/holen.es.js",
   "module": "dist/holen.es.js",
