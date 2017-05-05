@@ -66,8 +66,6 @@ describe('holen', () => {
       }
     })
 
-    const doFetch = (fetch) => setTimeout(fetch)
-
     server.start(err => {
       expect(err).toBeUndefined()
       let runCount = 0
