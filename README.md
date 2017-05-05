@@ -17,9 +17,20 @@ npm install -S holen
 ```
 
 ## Basic Usage
-```jsx harmony
+```jsx
+// Fetch on mount
 <Holen url="api.startup.com/users">
   {({data}) => <pre>{JSON.stringify(data, null, 2)}</pre>}
+</Holen>
+
+// Lazy fetch
+<Holen lazy onResponse={handleResponse} url="api.startup.com/users">
+  {({data, fetch}) => (
+    <div>
+      <button onClick={fetch}>Load Data</button>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  )}
 </Holen>
 ```
 
@@ -27,7 +38,7 @@ npm install -S holen
 
 **body** `any`
 
-```jsx harmony
+```jsx
 <Holen 
   body={JSON.stringify({ message: 'hello' })}
   method="POST"
@@ -51,7 +62,7 @@ The object contains the following keys:
 - error: `object`
 - fetch: `function`
 
-```jsx harmony
+```jsx
 <Holen url="api.startup.com/users">
   {({data}) => <div>{data.name}</div>}
 </Holen>
@@ -71,7 +82,7 @@ The object contains the following keys:
 If true then the component will **not** perform the fetch on mount. 
 You must use the `fetch` named argument in order to initiate the request.
 
-```jsx harmony
+```jsx
 <Holen lazy url="api.startup.com/users">
   {({fetching}) => {fetching && <div>Loading</div>}} // renders nothing, fetch was not started
 </Holen>
@@ -86,7 +97,7 @@ You must use the `fetch` named argument in order to initiate the request.
 If true then the component will **not** perform the fetch on mount. 
 You must use the `fetch` named argument in order to initiate the request.
 
-```jsx harmony
+```jsx
 <Holen 
   lazy 
   url="api.startup.com/users">
@@ -98,7 +109,7 @@ You must use the `fetch` named argument in order to initiate the request.
 
 callback called on the response.
 
-```jsx harmony
+```jsx
 const handleResponse = (error, response) => {
   if (error || !response.ok) {
     panic()
@@ -111,7 +122,13 @@ const handleResponse = (error, response) => {
   lazy
   onResponse={handleResponse}
   url="api.startup.com/users">
-  {({ fetching }) => {fetching && <div>Loading</div>}}
+  {({ data, fetch }) => (
+    <div>
+      <button onClick={fetch}>Load Data</button>
+      <pre>{JSON.stringify(data, null , 2)}</pre>
+    </div>
+  )}
+    
 </Holen>
 ```
 
