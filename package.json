@@ -17,7 +17,8 @@
     "rollup": "rollup -c",
     "minify:cjs": "uglifyjs $npm_package_main -cm toplevel -o $npm_package_main -p relative --in-source-map ${npm_package_main}.map --source-map ${npm_package_main}.map",
     "minify:umd": "uglifyjs $npm_package_umd_main -cm -o $npm_package_umd_main -p relative --in-source-map ${npm_package_umd_main}.map --source-map ${npm_package_umd_main}.map",
-    "size": "echo \"Gzipped Size: $(strip-json-comments --no-whitespace $npm_package_main | gzip-size)\""
+    "size": "echo \"Gzipped Size: $(strip-json-comments --no-whitespace $npm_package_main | gzip-size)\"",
+    "release": "npm run test && npm run build && npm version patch && npm publish && git push --tags"
   },
   "dependencies": {
     "isomorphic-unfetch": "^1.0.0"
