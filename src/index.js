@@ -47,7 +47,7 @@ export default class Holen extends React.Component {
     const updateState = (error, response) => {
       this.setState(
         {
-          data: response.data,
+          data: response && response.data ? response.data : undefined,
           error,
           fetching: false,
           response
