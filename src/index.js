@@ -112,7 +112,7 @@ Holen.propTypes = {
   credentials: PropTypes.string,
   headers: PropTypes.object,
   lazy: PropTypes.bool,
-  method: PropTypes.oneOf(['get', 'post', 'put', 'delete']),
+  method: PropTypes.oneOf(['get', 'post', 'put', 'delete', 'GET', 'POST', 'PUT', 'DELETE']),
   onResponse: PropTypes.func,
   url: PropTypes.string.isRequired
 }
