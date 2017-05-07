@@ -34,13 +34,11 @@ export default class Holen extends React.Component {
   }
 
   doFetch (options) {
-    const {
-      url,
-      body,
-      credentials,
-      headers,
-      method
-    } = Object.assign({}, this.props, options)
+    const {url, body, credentials, headers, method} = Object.assign(
+      {},
+      this.props,
+      options
+    )
 
     this.setState({fetching: true})
 
@@ -96,13 +94,15 @@ export default class Holen extends React.Component {
     }
 
     const children = childrenToArray(this.props.children)
-    return children[0]({
-      fetching: this.state.fetching,
-      response: this.state.response,
-      data: this.state.data,
-      error: this.state.error,
-      fetch: this.doFetch
-    }) || null
+    return (
+      children[0]({
+        fetching: this.state.fetching,
+        response: this.state.response,
+        data: this.state.data,
+        error: this.state.error,
+        fetch: this.doFetch
+      }) || null
+    )
   }
 }
 
@@ -118,5 +118,6 @@ Holen.propTypes = {
 }
 
 Holen.defaultProps = {
-  method: 'get'
+  method: 'get',
+  onResponse: () => {}
 }
