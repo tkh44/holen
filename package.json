@@ -61,8 +61,13 @@
     "test": "tests"
   },
   "keywords": [
-    "flux",
-    "tiny-flux",
+    "fetch",
+    "react",
+    "react-component",
+    "react-fetch",
+    "fetch-component",
+    "preact",
+    "preact-fetch",
     "holen"
   ],
   "eslintConfig": {
