@@ -25,7 +25,7 @@ npm install -S holen
 
 // Lazy fetch
 <Holen lazy onResponse={handleResponse} url="api.startup.com/users">
-  {({data, fetch}) => (
+  {({fetching, data, fetch, error}) => (
     <div>
       <button onClick={fetch}>Load Data</button>
       <pre>{JSON.stringify(data, null, 2)}</pre>
