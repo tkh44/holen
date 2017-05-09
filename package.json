@@ -1,7 +1,7 @@
 {
   "name": "holen",
   "version": "0.0.9",
-  "description": "Tiny flux implementation built on mitt",
+  "description": "Declarative fetch in React",
   "jsnext:main": "dist/holen.es.js",
   "module": "dist/holen.es.js",
   "main": "dist/holen.js",
