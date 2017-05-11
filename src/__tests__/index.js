@@ -31,7 +31,7 @@ describe('holen', () => {
         expect(fetching).toBe(runCount < 2)
 
         if (data) {
-          expect(data.message).toBe('hello')
+          expect(data.message).toBe('hello1')
         }
         ++runCount
         return <div />
@@ -42,9 +42,13 @@ describe('holen', () => {
           method={'get'}
           onResponse={(err, res) => {
             expect(err).toBeUndefined()
-            expect(res.data.message).toBe('hello')
+            expect(res.data.message).toBe('hello1')
             expect(res.ok).toBe(true)
             server.stop(done)
+          }}
+          transformResponse={(data) => {
+            data.message += '1'
+            return data
           }}
           url={'http://localhost:' + server.connections[0].info.port}
         >
