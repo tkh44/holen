@@ -45,7 +45,7 @@ export default class Holen extends React.Component {
     const updateState = (error, response) => {
       this.setState(
         {
-          data: response && response.data ? response.data : undefined,
+          data: response && response.data ? this.props.transformResponse(response.data) : undefined,
           error,
           fetching: false,
           response
@@ -67,8 +67,7 @@ export default class Holen extends React.Component {
           return
         }
 
-        return res
-          .json()
+        return res[this.props.type]()
           .then(data => {
             res.data = data
             return res
@@ -114,10 +113,14 @@ Holen.propTypes = {
   lazy: PropTypes.bool,
   method: PropTypes.oneOf(['get', 'post', 'put', 'delete', 'GET', 'POST', 'PUT', 'DELETE']),
   onResponse: PropTypes.func,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['json', 'text', 'blob']),
+  transformResponse: PropTypes.func
 }
 
 Holen.defaultProps = {
   method: 'get',
-  onResponse: () => {}
+  type: 'json',
+  onResponse: () => {},
+  transformResponse: data => data
 }
