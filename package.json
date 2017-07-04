@@ -21,7 +21,7 @@
     "release": "npm run test && npm run build && npm version patch && npm publish && git push --tags"
   },
   "dependencies": {
-    "isomorphic-unfetch": "^1.0.0"
+    "isomorphic-unfetch": "^2.0.0"
   },
   "peerDependencies": {
     "react": ">=14"
