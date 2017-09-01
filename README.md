@@ -39,7 +39,7 @@ npm install -S holen
 **body** `any`
 
 ```jsx
-<Holen 
+<Holen
   body={JSON.stringify({ message: 'hello' })}
   method="POST"
   url="api.startup.com/users"
@@ -76,10 +76,9 @@ The object contains the following keys:
 
 *[MDN - Headers](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Headers)*
 
-
 **lazy** `boolean`
 
-If true then the component will **not** perform the fetch on mount. 
+If true then the component will **not** perform the fetch on mount.
 You must use the `fetch` named argument in order to initiate the request.
 
 ```jsx
@@ -92,7 +91,6 @@ You must use the `fetch` named argument in order to initiate the request.
 
 *[MDN - Method](https://developer.mozilla.org/en-US/docs/Web/API/Request/method)*
 
-
 **onResponse** `function`
 
 callback called on the response.
@@ -102,11 +100,11 @@ const handleResponse = (error, response) => {
   if (error || !response.ok) {
     panic()
   }
-  
+
   cheer()
 }
 
-<Holen 
+<Holen
   lazy
   onResponse={handleResponse}
   url="api.startup.com/users">
@@ -116,9 +114,12 @@ const handleResponse = (error, response) => {
       <pre>{JSON.stringify(data, null , 2)}</pre>
     </div>
   )}
-    
 </Holen>
 ```
+
+**type** `string` - *default `json`*
+
+Fetch method applied to the response. One of `json`, `text`, or `blob`.
 
 **url** `string`
 
