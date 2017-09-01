@@ -117,6 +117,10 @@ const handleResponse = (error, response) => {
 </Holen>
 ```
 
+**transformResponse** `function` - *default `data => data`*
+
+The `transformResponse` prop is a function that can be used to massage the response data. It receives one argument, `data`, and by default, performs an identity operation, returning the data passed to it.
+
 **type** `string` - *default `json`*
 
 Fetch method applied to the response. One of `json`, `text`, or `blob`.
