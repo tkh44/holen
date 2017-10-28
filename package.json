@@ -1,6 +1,6 @@
 {
   "name": "holen",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Declarative fetch in React",
   "jsnext:main": "dist/holen.es.js",
   "module": "dist/holen.es.js",
