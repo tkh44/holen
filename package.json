@@ -20,9 +20,6 @@
     "size": "echo \"Gzipped Size: $(strip-json-comments --no-whitespace $npm_package_main | gzip-size)\"",
     "release": "npm run test && npm run build && npm version patch && npm publish && git push --tags"
   },
-  "dependencies": {
-    "isomorphic-unfetch": "^2.0.0"
-  },
   "peerDependencies": {
     "react": ">=14"
   },
@@ -32,9 +29,10 @@
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "gzip-size-cli": "^2.0.0",
     "hapi": "^16.1.0",
+    "isomorphic-unfetch": "^2.0.0",
     "jest": "^19.0.2",
     "npm-run-all": "^4.0.2",
     "pretty-bytes-cli": "^2.0.0",

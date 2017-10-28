@@ -1,4 +1,5 @@
 /* eslint-env jest */
+import 'isomorphic-unfetch'
 import Holen from '../index'
 const Hapi = require('hapi')
 const React = require('react')

@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import fetch from 'isomorphic-unfetch'
 
 function childrenToArray (children) {
   return Array.isArray && Array.isArray(children)
@@ -9,17 +8,11 @@ function childrenToArray (children) {
 }
 
 export default class Holen extends React.Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      fetching: !props.lazy,
-      response: undefined,
-      data: undefined,
-      error: undefined
-    }
-
-    this.doFetch = this.doFetch.bind(this)
+  state = {
+    fetching: !this.props.lazy,
+    response: undefined,
+    data: undefined,
+    error: undefined
   }
 
   componentDidMount () {
@@ -29,25 +22,38 @@ export default class Holen extends React.Component {
     this.doFetch()
   }
 
+  componentWillReceiveProps (nextProps) {
+    // only refresh when keys with primitive types change
+    const refreshProps = ['url', 'method', 'lazy', 'type', 'body']
+    if (refreshProps.some(key => this.props[key] !== nextProps[key])) {
+      this.doFetch(nextProps)
+    }
+  }
+
   componentWillUnmount () {
     this.willUnmount = true
   }
 
-  doFetch (options) {
-    const {url, body, credentials, headers, method} = Object.assign(
+  doFetch = options => {
+    const { url, body, credentials, headers, method } = Object.assign(
       {},
       this.props,
       options
     )
 
-    this.setState({fetching: true})
+    this.setState({ fetching: true })
 
     const updateState = (error, response) => {
+      if (this.willUnmount) {
+        return
+      }
+
       this.setState(
         {
-          data: response && response.data
-            ? this.props.transformResponse(response.data)
-            : undefined,
+          data:
+            response && response.data
+              ? this.props.transformResponse(response.data)
+              : undefined,
           error,
           fetching: false,
           response
@@ -58,6 +64,7 @@ export default class Holen extends React.Component {
       )
     }
 
+    // eslint-disable-next-line no-undef
     return fetch(url, {
       body,
       credentials,
@@ -90,9 +97,10 @@ export default class Holen extends React.Component {
       return null
     }
 
-    const children = childrenToArray(this.props.children)
+    const renderFn =
+      this.props.render || childrenToArray(this.props.children)[0]
     return (
-      children[0]({
+      renderFn({
         fetching: this.state.fetching,
         response: this.state.response,
         data: this.state.data,
