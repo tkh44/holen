@@ -113,10 +113,12 @@ Holen.propTypes = {
     'get',
     'post',
     'put',
+    'patch',
     'delete',
     'GET',
     'POST',
     'PUT',
+    'PATCH',
     'DELETE'
   ]),
   onResponse: PropTypes.func,
