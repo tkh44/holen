@@ -131,7 +131,13 @@ Holen.propTypes = {
   ]),
   onResponse: PropTypes.func,
   url: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['json', 'text', 'blob']),
+  type: PropTypes.oneOf([
+    'json',
+    'text',
+    'blob',
+    'arrayBuffer',
+    'formData'
+  ]),
   transformResponse: PropTypes.func
 }
 
