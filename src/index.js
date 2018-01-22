@@ -114,7 +114,7 @@ export default class Holen extends React.Component {
 Holen.propTypes = {
   body: PropTypes.any,
   children: PropTypes.func,
-  credentials: PropTypes.string,
+  credentials: PropTypes.oneOf(['omit', 'same-origin', 'include']),
   headers: PropTypes.object,
   lazy: PropTypes.bool,
   method: PropTypes.oneOf([
