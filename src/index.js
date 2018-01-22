@@ -123,11 +123,15 @@ Holen.propTypes = {
     'put',
     'patch',
     'delete',
+    'options',
+    'head',
     'GET',
     'POST',
     'PUT',
     'PATCH',
-    'DELETE'
+    'DELETE',
+    'OPTIONS',
+    'HEAD'
   ]),
   onResponse: PropTypes.func,
   url: PropTypes.string.isRequired,
