@@ -123,7 +123,8 @@ The `transformResponse` prop is a function that can be used to massage the respo
 
 **type** `string` - *default `json`*
 
-Fetch method applied to the response. One of `json`, `text`, or `blob`.
+The [body method](https://developer.mozilla.org/en-US/docs/Web/API/Body) applied to
+the response. One of `json`, `text`, `blob`, `arrayBuffer` or `formData`.
 
 **url** `string`
 
